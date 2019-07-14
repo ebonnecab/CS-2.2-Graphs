@@ -70,7 +70,7 @@ class Graph:
 
     def getVertex(self, n):
         """return the vertex if it exists"""
-        return n if n is in self.vertList
+        return n if self.vertList[n] else None
         
 
     def addEdge(self, f, t, cost=0):
@@ -78,10 +78,13 @@ class Graph:
         """
         #if either vertex is not in the graph,
         # add it - or return an error (choice is up to you).
-        # TODO if both vertices in the graph, add the
-        # edge by making t a neighbor of f
-        # and using the addNeighbor method of the Vertex class.
+        if not self.vertList[f] or not self.vertList[t]:
+            raise KeyError('Vertex not found')
+        #if both vertices in the graph, add the edge by making t a neighbor of f
+        #and using the addNeighbor method of the Vertex class.
         # Hint: the vertex f is stored in self.vertList[f].
+        else:
+            t.addNeighbor(self.vertList[f], cost)
 
     def getVertices(self):
         """return all the vertices in the graph"""
@@ -119,7 +122,7 @@ if __name__ == "__main__":
     # ...  add all 10 including you ...
 
     # Add connections (non weighted edges for now)
-    g.addEdge("Friend 1", "Friend 2")
+    g.addEdge("Ebonne", "Nadia")
     g.addEdge("Friend 2", "Friend 3")
 
     # Challenge 1: Output the vertices & edges
