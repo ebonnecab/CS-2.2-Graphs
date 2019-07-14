@@ -25,12 +25,11 @@ class Vertex(object):
 
     def __str__(self):
         """output the list of neighbors of this vertex"""
-        return str(self.id) + " adjancent to " +
-        str([x.id for x in self.neighbors])
+        return str(self.id) + ' adjacent: ' + str([x.id for x in self.neighbors])
 
     def getNeighbors(self):
         """return the neighbors of this vertex"""
-        return self.neighbors.keys() if self.neighbors not None
+        return self.neighbors.keys()
 
     def getId(self):
         """return the id of this vertex"""
@@ -84,7 +83,7 @@ class Graph:
         #and using the addNeighbor method of the Vertex class.
         # Hint: the vertex f is stored in self.vertList[f].
         else:
-            t.addNeighbor(self.vertList[f], cost)
+            self.vertList[t].addNeighbor(self.vertList[f], cost)
 
     def getVertices(self):
         """return all the vertices in the graph"""
@@ -123,7 +122,25 @@ if __name__ == "__main__":
 
     # Add connections (non weighted edges for now)
     g.addEdge("Ebonne", "Nadia")
-    g.addEdge("Friend 2", "Friend 3")
+    g.addEdge("Nadia", "Billy")
+    g.addEdge("Billy", "Julian")
+    g.addEdge("Julian", "Nadia")
+    g.addEdge("Ebonne", "Tonya")
+    g.addEdge("Tonya", "Kenny")
+    g.addEdge("Kenny", "Domonique")
+    g.addEdge("Domonique", "Ravin")
+    g.addEdge("Ravin", "Vitaline")
+    g.addEdge("Vitaline", "Tonya")
+    g.addEdge("Ebonne", "Neffie")
+    g.addEdge("Tonya", "Neffie")
+
+
+
+
+
+
+
+
 
     # Challenge 1: Output the vertices & edges
     # Print vertices
