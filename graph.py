@@ -75,13 +75,10 @@ class Graph:
     def addEdge(self, f, t, cost=0):
         """add an edge from vertex f to vertex t with a cost
         """
-        #if either vertex is not in the graph,
-        # add it - or return an error (choice is up to you).
+        #if either vertex is not in the graph, return error
         if not self.vertList[f] or not self.vertList[t]:
             raise KeyError('Vertex not found')
-        #if both vertices in the graph, add the edge by making t a neighbor of f
-        #and using the addNeighbor method of the Vertex class.
-        # Hint: the vertex f is stored in self.vertList[f].
+        #if both vertices in the graph, make t a neighbor of f
         else:
             self.vertList[t].addNeighbor(self.vertList[f], cost)
 
