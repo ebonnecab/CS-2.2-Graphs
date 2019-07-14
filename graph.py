@@ -19,8 +19,9 @@ class Vertex(object):
 
     def addNeighbor(self, vertex, weight=0):
         """add a neighbor along a weighted edge"""
-        # TODO check if vertex is already a neighbot
-        # TODO if not, add vertex to neighbors and assign weight.
+        #if vertex is not already a neighbor add vertex and assign weight
+        if vertex not in self.neighbors:
+            self.neighbors[vertex] = weight
 
     def __str__(self):
         """output the list of neighbors of this vertex"""
@@ -29,16 +30,16 @@ class Vertex(object):
 
     def getNeighbors(self):
         """return the neighbors of this vertex"""
-        # TODO return the neighbors
+        return self.neighbors.keys() if self.neighbors not None
 
     def getId(self):
         """return the id of this vertex"""
         return self.id
 
     def getEdgeWeight(self, vertex):
-        """return the weight of this edge"""
-        # TODO return the weight of the edge from this
-        vertext to the given vertex.
+        """return the weight of this edge from this vertex to the given vertex."""
+        return self.neighbors[vertex]
+ 
 
 
 """ Graph Class
@@ -58,19 +59,24 @@ class Graph:
         """add a new vertex object to the graph with
         the given key and return the vertex
         """
-        # TODO increment the number of vertices
-        # TODO create a new vertex
-        # TODO add the new vertex to the vertex list
-        # TODO return the new vertex
+        #increment the number of vertices
+        self.numVertices += 1
+        #create a new vertex
+        vertex = Vertex(key)
+        #add the new vertex to the vertex list
+        self.vertList[key] = vertex
+        #return the new vertex
+        return vertex
 
     def getVertex(self, n):
         """return the vertex if it exists"""
-        # TODO return the vertex if it is in the graph
+        return n if n is in self.vertList
+        
 
     def addEdge(self, f, t, cost=0):
         """add an edge from vertex f to vertex t with a cost
         """
-        # TODO if either vertex is not in the graph,
+        #if either vertex is not in the graph,
         # add it - or return an error (choice is up to you).
         # TODO if both vertices in the graph, add the
         # edge by making t a neighbor of f
