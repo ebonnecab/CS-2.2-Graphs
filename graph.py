@@ -98,9 +98,17 @@ if __name__ == "__main__":
     g = Graph()
 
     # Add your friends
-    g.addVertex("Friend 1")
-    g.addVertex("Friend 2")
-    g.addVertex("Friend 3")
+    g.addVertex("Ebonne")
+    g.addVertex("Nadia")
+    g.addVertex("Billy")
+    g.addVertex("Julian")
+    g.addVertex("Tonya")
+    g.addVertex("Kenny")
+    g.addVertex("Domonique")
+    g.addVertex("Ravin")
+    g.addVertex("Neffie")
+    g.addVertex("Vitaline")
+
 
     # ...  add all 10 including you ...
 
