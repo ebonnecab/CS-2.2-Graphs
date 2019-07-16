@@ -121,8 +121,8 @@ def create_graph(data):
     for vertex in data[1].split(','):
         graph.addVertex(vertex)
     
-    # for item in data[2:]:
-    #     graph.addEdge(item[1], item[2])
+    for item in data[2:]:
+        graph.addEdge(item[1], item[3], item[5:].replace(')', ''))
 
 
     print("The edges are: ")
