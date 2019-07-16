@@ -97,7 +97,14 @@ class Graph:
         return iter(self.vertList.values())
     
     def countVertices(self):
+        '''counts number of vertices
+        '''
         return self.numVertices
+    
+    def countEdges(self):
+        '''counts number of edges
+        '''
+        return self.numEdges
 
 def get_data(file):
     '''reading in data from file to create a graph
@@ -107,19 +114,23 @@ def get_data(file):
     return data
 
 def create_graph(data):
+    '''takes in data and creates graph w/ vertices and edges
+    '''
     graph = Graph()
 
     for vertex in data[1].split(','):
         graph.addVertex(vertex)
     
     # for item in data[2:]:
-    #     graph.addEdge(item[1], item[2:])
+    #     graph.addEdge(item[1], item[2])
 
 
     print("The edges are: ")
     for vertex in graph:
         for w in vertex.getNeighbors():
             print("( %s , %s )" % (vertex.getId(), w.getId()))
+    
+    print("The number of edges are: ", graph.countEdges(), "\n")
     
     print("The number of vertices are: ", graph.countVertices(), "\n")
     # Print vertices
