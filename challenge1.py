@@ -91,6 +91,13 @@ class Graph:
         graph, to use sytax: for v in g
         """
         return iter(self.vertList.values())
+    
+def get_data(file):
+    '''reading in data from file to create a graph
+    '''
+    with open(file) as f:
+        data = f.read().split()
+    return data
 
 
 # Driver code
@@ -131,14 +138,6 @@ if __name__ == "__main__":
     g.addEdge("Ebonne", "Neffie")
     g.addEdge("Tonya", "Neffie")
 
-
-
-
-
-
-
-
-
     # Challenge 1: Output the vertices & edges
     # Print vertices
     print("The vertices are: ", g.getVertices(), "\n")
@@ -147,3 +146,6 @@ if __name__ == "__main__":
     for v in g:
         for w in v.getNeighbors():
             print("( %s , %s )" % (v.getId(), w.getId()))
+
+    test = get_data('graph.txt')
+    print(test)
