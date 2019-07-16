@@ -53,6 +53,7 @@ class Graph:
         """
         self.vertList = {}
         self.numVertices = 0
+        self.numEdges = 0
 
     def addVertex(self, key):
         """add a new vertex object to the graph with
@@ -76,10 +77,13 @@ class Graph:
         """add an edge from vertex f to vertex t with a cost
         """
         #if either vertex is not in the graph, return error
-        if not self.vertList[f] or not self.vertList[t]:
-            raise KeyError('Vertex not found')
+        if not self.vertList[f]:
+            self.addVertex(f)
+        elif not self.vertList[t]:
+            self.addVertex(t)
         #if both vertices in the graph, make t a neighbor of f
         else:
+            self.numEdges+=1
             self.vertList[t].addNeighbor(self.vertList[f], cost)
 
     def getVertices(self):
@@ -92,12 +96,34 @@ class Graph:
         """
         return iter(self.vertList.values())
     
+    def countVertices(self):
+        return self.numVertices
+
 def get_data(file):
     '''reading in data from file to create a graph
     '''
     with open(file) as f:
         data = f.read().split()
     return data
+
+def create_graph(data):
+    graph = Graph()
+
+    for vertex in data[1].split(','):
+        graph.addVertex(vertex)
+    
+    # for item in data[2:]:
+    #     graph.addEdge(item[1], item[2:])
+
+
+    print("The edges are: ")
+    for vertex in graph:
+        for w in vertex.getNeighbors():
+            print("( %s , %s )" % (vertex.getId(), w.getId()))
+    
+    print("The number of vertices are: ", graph.countVertices(), "\n")
+    # Print vertices
+    print("The vertices are: ", graph.getVertices(), "\n")
 
 
 # Driver code
@@ -146,6 +172,7 @@ if __name__ == "__main__":
     for v in g:
         for w in v.getNeighbors():
             print("( %s , %s )" % (v.getId(), w.getId()))
+    
 
-    test = get_data('graph.txt')
-    print(test)
+    data = get_data('graph.txt')
+    graph = create_graph(data)
